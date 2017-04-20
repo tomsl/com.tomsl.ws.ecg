@@ -2,11 +2,13 @@
 ECG Lookup WebService
 
 NOT READY NOW ... 
+
 in the meantime you can try 
-  https://github.com/mjl/email-ecglist (python)
+https://github.com/mjl/email-ecglist (python)
   
 
 Small Webservice, based on dropwizard.io.
+https://github.com/dropwizard
 
 Used to Verify email-addresses and/or mail-domains against the 
 
