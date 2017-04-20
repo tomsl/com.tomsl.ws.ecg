@@ -1,6 +1,8 @@
 # com.tomsl.ws.ecg
 ECG Lookup WebService
 
+NOT READY NOW ... 
+
 Small Webservice, based on dropwizard.io.
 
 Used to Verify email-addresses and/or mail-domains against the 
