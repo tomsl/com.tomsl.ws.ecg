@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.tomsl.ws.ecg.ecg;
+package com.tomsl.ws.ecg;
 
+import com.tomsl.ws.ecg.EcgCheck;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
@@ -15,10 +16,14 @@ import java.util.logging.Logger;
  *
  * @author tomsl <tomsl@tomsl.com> / <t.streimelweger@schrack-seconet.com>
  */
-public class MainTest {
+public class EcgCheckTester {
 
-    private ArrayList<String> mail_lst = new ArrayList<>();
+    /* stores some test mail-addresses */
+    private final ArrayList<String> mail_lst = new ArrayList<>();
 
+    /**
+     * Start the test
+     */
     private void testmal() {
         System.out.println("in MAIN - TEST");
         System.out.println("");
@@ -41,6 +46,9 @@ public class MainTest {
         this.silenttest();
     }
 
+    /**
+     * Silent test, without mich of Console out.
+     */
     public void silenttest() {
         long start = System.currentTimeMillis();
         EcgCheck chk = EcgCheck.getInstance();
@@ -70,6 +78,9 @@ public class MainTest {
                 + " -> " + (a * chk.getEntryCount() * this.mail_lst.size()));
     }
 
+    /**
+     * Shows internal data (bytes) from the ecg list
+     */
     public void showblocks() {
         System.out.println("");
         EcgCheck chk = EcgCheck.getInstance();
@@ -77,6 +88,9 @@ public class MainTest {
 
     }
 
+    /**
+     * Shows internal representation (bytes) of the test mail arrayList.
+     */
     public void testLst() {
         System.out.println("");
         EcgCheck chk = EcgCheck.getInstance();
@@ -87,19 +101,21 @@ public class MainTest {
         });
     }
 
-
+    /**
+     * a Main
+     */
     public static void main(String[] args) {
-        new MainTest().testmal();
+        new EcgCheckTester().testmal();
     }
 
     {
-
-        mail_lst.add("asdf@tomsl.com");
+        /*on init: load some mails into test_mail list */
+        mail_lst.add("asdf@some.mail.tld");
+        mail_lst.add("asdfx@domain.tld");
         mail_lst.add("karl.testinger@firma.at");
         mail_lst.add("max.musterman@home.at");
         mail_lst.add("@home.lan");
         mail_lst.add("@firma.lan");
-        mail_lst.add("t.streimelweger@schrack-seconet.com");
 
     }
 }

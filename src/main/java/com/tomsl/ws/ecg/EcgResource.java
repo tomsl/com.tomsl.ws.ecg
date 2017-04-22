@@ -6,7 +6,6 @@
 package com.tomsl.ws.ecg;
 
 import com.codahale.metrics.annotation.Timed;
-import com.tomsl.ws.ecg.ecg.EcgCheck;
 import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

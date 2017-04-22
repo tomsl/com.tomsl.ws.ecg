@@ -1,9 +1,11 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * EcgCheck class
+ * 
+ * Also could be used 'stand alone' - copy to your project
+ * @author tomsl
+ * @since 2017.04.22
  */
-package com.tomsl.ws.ecg.ecg;
+package com.tomsl.ws.ecg;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -29,7 +31,12 @@ public class EcgCheck {
     private static EcgCheck instance;
     private MessageDigest md;
 
+    // for 'B' Modus, but is too slow
     private HashSet<byte[]> data = new HashSet<>();
+
+    /* internal datastruc
+        choosen HashMap for good search performance, value is only zero, never used.
+     */
     private HashMap<String, Integer> data2 = new HashMap<>();
 
     /**
@@ -63,6 +70,12 @@ public class EcgCheck {
         }
     }
 
+    /**
+     * Set the Filename with ECG-Data. Also flush and reload internal data
+     * struct.
+     *
+     * @param _filename
+     */
     public void setFilename(String _filename) {
         filename = _filename;
         try {
@@ -77,6 +90,11 @@ public class EcgCheck {
         System.out.println("Size: " + data.size());
     }
 
+    /**
+     * Returns current Filename of ECG - Hashfile.
+     *
+     * @return String filename
+     */
     public String getFilename() {
         return filename;
     }
@@ -104,17 +122,24 @@ public class EcgCheck {
      * @return true if the given String's sha1 is in ECG-LIST
      */
     public boolean isInEcg(String mailordomain) {
+        // make a byte-array of given String
         byte[] b = sha(mailordomain.getBytes());
+
+        // we use Strings to compare 
+        // cause byte[] with same content are not equal
         if (this.data2.containsKey(new String(b))) {
             return true;
         }
+
+        // if mail not hits. we also have to check the domain.
+        // cut off everything before the '@'
         String domain = StringUtils.substringAfterLast(mailordomain, "@");
         b = sha(domain.getBytes());
         if (this.data2.containsKey(new String(b))) {
             return true;
         }
+        // if not found the mail or the domain in the ECG-List
         return false;
-        //return this.data2.containsKey(new String(b));
     }
 
     /**

@@ -2,6 +2,7 @@
 #---
 
 ecg-file-name: ecg-list.hash
+ecg-test-file-name: 4243_testliste.hash
 
 server:
   type: default
