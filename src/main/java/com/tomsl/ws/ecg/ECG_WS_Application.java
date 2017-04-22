@@ -23,7 +23,7 @@ public class ECG_WS_Application extends Application<Ecg_Configuration> {
         final EcgResource ecg_res = new EcgResource();
         final EcgHealthCheck_01 ecg_chk01 = new EcgHealthCheck_01();
         final Sha1MakerResource sha_res = new Sha1MakerResource();
-        
+
         env.healthChecks().register("chk_01", ecg_chk01);
         env.jersey().register(ecg_res);
         env.jersey().register(sha_res);

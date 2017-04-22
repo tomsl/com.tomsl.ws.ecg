@@ -4,7 +4,7 @@
   <groupId>com.tomsl</groupId>
   <artifactId>ws.ecg</artifactId>
   <name>ECG WS</name>
-  <version>0.0.2</version>
+  <version>0.0.3</version>
   <build>
     <plugins>
       <plugin>

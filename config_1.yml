@@ -1,8 +1,0 @@
-## YAML Template.
-#---
-
-ecg-file-name: ecg-list.hash
-
-server:
-  type: default
-  maxThreads: 1024
