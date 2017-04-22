@@ -1,6 +1,7 @@
 # com.tomsl.ws.ecg
 ECG Lookup WebService
 
+! NOT READY !!!
 NOT READY NOW ... 
 
 in the meantime you can try 

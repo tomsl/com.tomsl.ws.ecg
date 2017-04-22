@@ -6,11 +6,13 @@
 package com.tomsl.ws.ecg;
 
 import com.codahale.metrics.annotation.Timed;
+import com.tomsl.ws.ecg.ecg.EcgCheck;
 import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.QueryParam;
 import org.apache.commons.lang3.StringUtils;
 
@@ -18,12 +20,13 @@ import org.apache.commons.lang3.StringUtils;
  *
  * @author tomsl <tomsl@tomsl.com> / <t.streimelweger@schrack-seconet.com>
  */
-@Path("/")
+@Path("/ecg/")
 public class EcgResource {
 
     @GET
     @Timed
-    public String checkMailOrDomain(@QueryParam("mail") Optional<String> mail) {
+    @Path("{mail}")
+    public String checkMailOrDomain(@PathParam("mail") Optional<String> mail) {
         String ret = "huhu";
 
         String m = mail.get().trim();
@@ -38,7 +41,22 @@ public class EcgResource {
             ret = " does not look like a mail or domain ... check anyway";
         }
 
+        EcgCheck chk = EcgCheck.getInstance();
+        ret += "\n allowed: " + chk.isMailAllowed(m);
+
         return ret;
+    }
+
+    @GET
+    @Path("/ismail/{mail}")
+    public String isMail2(@PathParam("mail") String mail) {
+        return this.isMail(mail) + "";
+    }
+
+    @GET
+    @Path("/isdomain/{domain}")
+    public String isDomain2(@PathParam("domain") String domain) {
+        return this.isDomain(domain) + "";
     }
 
     /**
