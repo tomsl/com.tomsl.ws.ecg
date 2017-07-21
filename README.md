@@ -18,7 +18,7 @@ https://www.rtr.at/de/tk/TKKS_ECGListe
 
 ECG File.
 
-Used to check if mail-recivers are 'disallowed' by Robins-List
+Used to check if mail-recivers are 'disallowed' by Robinson-List
 << for AUSTRIA only >>
 
 
